@@ -9,7 +9,7 @@ namespace Organize.Models
     {
         public int ContainerId { get; set; }
         public string ContainerName { get; set; }
-        public int Items { get; set; }
+        public List<Item> Items { get; set; }
 
     }
 }
