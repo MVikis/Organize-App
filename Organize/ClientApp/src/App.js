@@ -1,28 +1,52 @@
-import React, { Component } from 'react';
-import { Route } from 'react-router';
-import { Layout } from './components/Layout';
-import { Home } from './components/Home';
-
-import { Counter } from './components/Counter';
+import React, { useEffect, useState } from 'react';
+import { Route, Switch, useLocation } from 'react-router';
+import Layout from './components/Layout';
+import Home from './components/Home';
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { fab } from '@fortawesome/free-brands-svg-icons'
-import { faCheckSquare, faBoxOpen } from '@fortawesome/free-solid-svg-icons'
+import { faCheckSquare, faBoxOpen,faPlus, faSearch,faTimes,faCloudUploadAlt} from '@fortawesome/free-solid-svg-icons'
 import './custom.css'
 import './style.css'
-
+import {AnimatePresence} from 'framer-motion'
 import UserPage from './components/UserPage';
-library.add(fab, faCheckSquare, faBoxOpen)
+import BoxPage from './components/BoxPage';
+library.add( faCheckSquare, faBoxOpen, faPlus, faSearch,faTimes,faCloudUploadAlt)
 
-export default class App extends Component {
-  static displayName = App.name;
+export default function App() {
+const location = useLocation()
 
-  render () {
+  const handleSumbit = async(data,url) => {
+
+    await fetch('api'+url, {  
+        method: 'POST',  
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),  
+    }).then((response) => response.json())  
+        .then((responseJson) => {  
+            console.log(responseJson)
+          
+        })  
+  }
+  
+
+
+  
     return (
-      <Layout>
+
+     
+      <Layout location={location}>
+        
+        <AnimatePresence exitBeforeEnter>
+        <Switch location={location} key={location.key}>
         <Route exact path='/' component={Home} />
-        <Route path='/user' component={UserPage} />
+        <Route exact path='/user' component={(props) => <UserPage handleSumbit={handleSumbit}    />} />
+        <Route path='/user/:id' render={(props) =>  <BoxPage handleSumbit={handleSumbit}   />}/>
+      
        
+        </Switch>
+        </AnimatePresence>
       </Layout>
     );
-  }
+  
 }

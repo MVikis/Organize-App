@@ -13,6 +13,7 @@ namespace Organize.Models
 
         }
         public DbSet<Container> Containers { get; set; }
+        public DbSet<Item> Items { get; set; }
     }
 }
 

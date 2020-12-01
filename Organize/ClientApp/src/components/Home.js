@@ -1,16 +1,49 @@
 import React, { Component } from 'react';
 
-export class Home extends Component {
-  static displayName = Home.name;
+import {motion} from 'framer-motion'
 
-  render () {
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import logPic from './logistics.svg'
+import Frame from './Frame1.svg'
+
+
+export default function Home(){
+  
+
+ 
     return (
-      <div>
-        <h1>Hello, world!</h1>
-        <p>Welcome to your new single-page application, built with:</p>
+
+     
+      <motion.div 
+      initial={{opacity:0}}
+      animate={{opacity:1}}
+      exit={{opacity:0}}
+      className="home column"
+      >
       
-        <p>The <code>ClientApp</code> subdirectory is a standard React application based on the <code>create-react-app</code> template. If you open a command prompt in that directory, you can run <code>npm</code> commands such as <code>npm test</code> or <code>npm install</code>.</p>
-      </div>
+        <div className="row">
+          <div className="home-text">
+            <h1>Organize.</h1>
+            <h3>wefwefsfs wefwsfswe wedwwffgf.</h3>
+          </div>
+        
+        </div>
+        {/* <div className="img-container">
+       <img src={Frame}/>
+
+        </div> */}
+        <motion.div 
+        initial={{x:200}}
+        animate={{x:0}}
+        exit={{opacity:0}}
+        className="front-svg">
+       <img src={logPic}/>
+
+        </motion.div>
+      
+      
+      </motion.div>
+     
     );
-  }
+  
 }

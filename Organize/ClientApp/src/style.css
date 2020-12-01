@@ -1,15 +1,107 @@
+html{
+    overflow: hidden;
+    font-family: Poppins;
+    
+}
+header{
+    overflow: hidden;
+}
+.wave-bg{
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+}
+.wave-bg .bg{
+    background: #3aafa9;
+
+}
+.wave-bg svg{
+  position: absolute;
+  bottom: -150px;
+
+    
+}
+.wave-bg svg:nth-child(1){
+    z-index: 2;
+}
+body{
+    margin:0;
+    padding: 0;
+}
+:root{
+    --primary-color:#3aafa9;
+    --dark-primary-color: #2b7a78;
+    --secondary-color: #def2f1;
+    --black-color: #17252A;
+    --white-color:#feffff;
+    
+}
+h1{
+    font-weight: 900;
+    font-variant:normal;
+    font-size: calc(25px + 2vmin);
+}
+h2{
+    font-weight: 200;
+    font-size: calc(18px + 2vmin);
+
+}
+h3{
+    font-size: calc(18px + 2vmin);
+    font-weight: 400;
+}
 p{
     font-weight: 200;
 
 }
+.loader{
+    margin: 40px auto;
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    background-color: var(--primary-color);
+}
+.home{
+    width: 100%;
+    height: 100%;
+    
+}
+.home .img-container{
+ z-index: 1;
+    overflow: hidden;
+    position: absolute;
+    width:100%;
+    height: 100vh;
+  
+}
+.home .front-svg{
+    position: absolute;
+    bottom: 20px;
+    right: 100px;
+}
+.home img{
 
+    width: 100%;
+    height: 100%;
+    
+}
+.home-text{
+    transform: translate(30px, -100px);
+    z-index: 3;
+}
 
 .overlay{
+    z-index: 1;
+}
+.data{
+    position: relative;
+    z-index: 5;
     height: 100vh;
     width:100%;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    
 }
 .column{
     display: flex;
@@ -23,4 +115,272 @@ p{
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
+    max-width: 900px;
+}
+
+
+.box-card{
+    margin:20px;
+    position: relative;
+}
+.box-card:hover svg:nth-child(2){
+    transform: translateX(-50px);
+    transform: translateY(-50px);
+    opacity: 1;
+}
+.box-card:hover svg:nth-child(3){
+    transform: translateX(-0vw);
+    opacity: 1;
+    transform: translateY(-50px);
+
+}.box-card:hover svg:nth-child(4){
+    transform: translateX(50px);
+    transform: translateY(-50px);
+    opacity: 1;
+
+}
+.box-card svg:nth-child(1) {
+    font-size: 100px;
+    position: relative;
+    opacity: 1;
+ }
+ .box-card svg:nth-child(1) path{
+    color:var(--primary-color);
+    height: 100%;
+    width: auto;
+ }
+ 
+.box-card svg{
+    opacity: 0;
+    font-size: 30px;
+    position: absolute;
+    transform: translateX(0);
+    transform: translateY(0);
+ }
+ .box-page-title h2{
+  text-align: center;
+  margin: 0;
+  font-size: 40px;
+}
+ 
+
+
+.box-page-title svg{
+    font-size: 150px;
+}
+ .box-page-title svg path{
+    color:var(--primary-color);
+    height: 100%;
+    width: auto;
+}
+.title-name{
+    color: var(--secondary-color);
+    position: absolute;
+    bottom: -15px;
+}
+.logo{
+    position: absolute;
+    left: 0;
+    top:-20px;
+}
+nav{
+    z-index: 7;
+    background: transparent;
+    height: 10vh;
+    position: fixed;
+  width: 100%;
+
+}
+ul{
+    z-index: 2;
+    align-items: center;
+  width: 100%;
+  padding:0;
+  margin:0;
+  justify-content: flex-end;
+  display: flex;
+  list-style-type: none;
+}
+ul>li{
+  align-items: center;
+  width: 10vw;
+  display: flex;
+  justify-content: center;
+ font-size: 20px;
+  height: 80px;
+}
+.link-text:hover .underline{
+ width: 100%;
+
+}
+nav >svg{
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50%;
+    max-width: 500px;
+    height: auto;
+}
+svg, li{
+  transition: all 1s ease;
+}
+li a{
+    position: relative;
+    width: 50%;
+    text-align: center;
+    text-decoration: none;
+    color:var(--secondary-color);
+}
+.box-page-title{
+    color: var(--black-color);
+    position: absolute;
+    top:10vh;
+   
+}
+
+.form-inline{
+    border-bottom: #2b7a78;
+}
+.wrapper{
+  
+    padding: 20px;
+    background-color:transparent;
+    border-radius: 10px;
+    /* box-shadow: 
+    0 0.7px 4px rgba(0,0,0,0.045),
+     0 1.9px 11.1px rgba(0,0,0,0.065),
+      0 4.5px 26.8px rgba(0,0,0,0.085),
+      0 15px 89px rgba(0,0,0,0.013) ; */
+}
+.wrapper .input-data{
+    position: relative;
+    display: inline-block;
+    background: transparent;
+    
+}
+.wrapper .input-data label{
+    font-size: 20px;
+    position: absolute;
+    left:0;
+    transition: 0.5s ease;
+    color: var(--secondary-color);
+
+}
+#search-input{
+    width: 60px;
+}
+.wrapper .input-data input{
+    
+    border: none;
+    outline: none;
+    background: transparent;
+    color: var(--secondary-color);
+    font-size: 20px;
+    transition: 1s ease;
+    z-index: 5;
+    position: relative;
+
+}
+.wrapper .input-data .underline-gray{
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+    left:0;
+    height: 2px;
+    background: gray;
+    z-index: 2;
+}
+ .underline{
+    position: absolute;
+    bottom: 0px;
+    width: 0;
+    left:0;
+    height: 2px;
+    background: var(--secondary-color);
+    transition:  0.5s ease;
+    z-index: 3;
+}
+.wrapper .input-data button{
+background-color: transparent;
+border: none;
+cursor: pointer;
+}
+.wrapper .input-data button svg{
+    font-size: 25px;
+}
+.wrapper .input-data button:focus{
+   outline: none;
+   
+    }
+    .wrapper .input-data input:valid ~ label,
+.wrapper .input-data input:focus ~ label{
+   transform: translateY(-20px);
+   font-size: 13px;
+}
+.wrapper .input-data #search-input:focus{
+    width: 150px;
+}
+.wrapper .input-data input:focus ~ .underline{
+    width: 100%;
+ }
+ button svg path{
+     transition: 1s ease;
+ }
+ .wrapper .input-data input:focus ~ button svg path{
+    color: #3aafa9;
+ }
+ .search-overlay{
+     height: 100vh;
+     width: 100vw;
+     position: absolute;
+     z-index: 10;
+     top:0;
+     left:0;
+ }
+ .search-list{
+    position: absolute;
+    top: 25%;
+    left: 25%;
+    border-radius: 25px;
+    background-color: #17252A;
+    width: 50%;
+    min-height: 50%;
+ }
+ .search-list svg{
+     font-size: 35px;
+     position: absolute;
+     right: 10px;
+     top: 10px;
+ }
+ .search-list svg path {
+     fill: #2b7a78;
+ }
+.btn{
+    border-radius: 25px;
+    text-align: center;
+    min-width: 60px;
+    margin: 10px;
+    position: relative;
+    border: none;
+    padding: 10px;
+    background-color:var(--white-color);
+    box-shadow: 
+    0 0.7px 4px rgba(0,0,0,0.045),
+     0 1.9px 11.1px rgba(0,0,0,0.065),
+      0 4.5px 26.8px rgba(0,0,0,0.085),
+      0 15px 89px rgba(0,0,0,0.013) ;
+}
+ .btn:hover:after{
+    width: 100%;
+}
+.btn:focus:after{
+    width: 100%;
+}
+.btn:focus{
+ border: none;
+ outline: none;
+}
+
+svg{
+    cursor: pointer;
 }

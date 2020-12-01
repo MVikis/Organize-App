@@ -2,15 +2,17 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Organize.Models;
 
 namespace Organize.Migrations
 {
     [DbContext(typeof(ContainerDbContext))]
-    partial class ContainerDbContextModelSnapshot : ModelSnapshot
+    [Migration("20201118074657_AddedForeign2")]
+    partial class AddedForeign2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
