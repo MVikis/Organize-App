@@ -1,13 +1,17 @@
 import React, { useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { createUnparsedSourceFile } from 'typescript'
 import {motion, AnimatePresence} from 'framer-motion'
+import {  Link } from 'react-router-dom'
+import Popup from './Popup'
 
-export default function AddComp(props) {
+export default function Search(props) {
+
+  
     const [toggle, setToggle] = useState(false)
     const ToggleFunction = () => setToggle(!toggle)
     const [searchString, setSearch] = useState('')
     const [ItemsValues, setItems] = useState({items: [],setValues:true})
+
     const FormChange=(event)=>{
         const { value} = event.target
         setSearch(value)
@@ -31,13 +35,22 @@ export default function AddComp(props) {
 
             
         }
+     
 
-      const searchVariants={
-        initial:{y:-200,opacity:0},
-        animate:{y:0,opacity:1},
-        exit:{y:-200, opacity:0}
-
-
+    
+      const popupContent=()=>{
+        return(<div>
+          <FontAwesomeIcon onClick={ToggleFunction}  className="cross" icon="times"/>
+          <h3>Search list</h3>
+         
+<div className="row">
+  {ItemsValues.items.map((Item)=>
+  <Link className="nav-link" onClick={ToggleFunction} to={`/user/${Item.container.containerId}`}><div   className="btn row" key={Item.itemId}>
+  <div className="column"> Item: <div className="search-item">{Item.itemName}</div></div><div className="column">Container:<div className="search-item">{Item.container.containerName}</div></div>
+     </div></Link>)}
+    </div>
+    </div>
+        )
       }
 
      
@@ -50,7 +63,7 @@ export default function AddComp(props) {
           <input id="search-input" required name="SearchString" type="text" onChange={FormChange} ></input>
           <label>Search</label>
           <div className="underline"/>
-          {/* <div className="underline-gray"/> */}
+          
           <button type="submit">
         <FontAwesomeIcon  icon="search"/>
         </button>
@@ -58,26 +71,7 @@ export default function AddComp(props) {
         </div>
        
     </form>
-    <AnimatePresence exitBeforeEnter>
-    {toggle&&(
-    <motion.div
-    initial={{opacity:0}}
-    animate={{opacity:1}}
-      exit={{opacity:0}}
-    className="search-overlay">
-  <motion.div    variants={searchVariants}
-                    initial='initial'
-                  animate='animate'
-                    exit='exit'
-                    className="search-list">
-                      <FontAwesomeIcon onClick={ToggleFunction}  icon="times"/>
-    <div className="row">
-              {ItemsValues.items.map((Item)=>
-              <div className="btn" key={Item.itemId}>
-                {Item.itemName} {Item.container.containerName}</div>)}
-                </div>
-                </motion.div></motion.div>
-                )}</AnimatePresence>
+    <AnimatePresence exitBeforeEnter>{toggle&&(<Popup content={popupContent()}/>)}</AnimatePresence>
 
 
                 {ItemsValues.setValues===false&&

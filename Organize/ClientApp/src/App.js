@@ -28,20 +28,19 @@ const location = useLocation()
           
         })  
   }
+   
   
 
 
   
     return (
 
-     
       <Layout location={location}>
-        
         <AnimatePresence exitBeforeEnter>
         <Switch location={location} key={location.key}>
         <Route exact path='/' component={Home} />
         <Route exact path='/user' component={(props) => <UserPage handleSumbit={handleSumbit}    />} />
-        <Route path='/user/:id' render={(props) =>  <BoxPage handleSumbit={handleSumbit}   />}/>
+        <Route path='/user/:id' render={(props) =>  <BoxPage  handleSumbit={handleSumbit}   />}/>
       
        
         </Switch>

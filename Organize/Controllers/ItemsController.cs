@@ -58,30 +58,35 @@ namespace Organize.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutItem(int id, Item item)
+        public async Task<ActionResult<Item>> PutItem(List<Item> items)
         {
-            if (id != item.ItemId)
+            foreach(Item item in items)
             {
-                return BadRequest();
+                _context.Entry(item).State = EntityState.Modified;
             }
+            
+            //if (id != item.ItemId)
+            //{
+            //    return BadRequest();
+            //}
 
-            _context.Entry(item).State = EntityState.Modified;
+          
 
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!ItemExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+            //try
+            //{
+            //    await _context.SaveChangesAsync();
+            //}
+            //catch (DbUpdateConcurrencyException)
+            //{
+            //    if (!ItemExists(id))
+            //    {
+            //        return NotFound();
+            //    }
+            //    else
+            //    {
+            //        throw;
+            //    }
+            //}
 
             return NoContent();
         }
@@ -92,6 +97,7 @@ namespace Organize.Controllers
         [HttpPost]
         public async Task<ActionResult<Item>> PostItem(Item item)
         {
+           
             _context.Items.Add(item);
             await _context.SaveChangesAsync();
 

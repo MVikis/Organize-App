@@ -12,6 +12,23 @@ namespace Organize.Models
         public int ItemId { get; set; }
         public string ItemName { get; set; }
 
+        private string levelCordination;
+
+        public string LevelCordination
+        {
+            get { return levelCordination; }
+            set { if(value!="Upper" && value!="Lower" && value!="Center") 
+                {
+                    levelCordination = null;
+                }
+                else
+                {
+                    levelCordination = value;
+                }
+            }
+        }
+
+
         [ForeignKey("Container")]
         public int ContainerId { get; set; }
         public Container Container { get; set; }

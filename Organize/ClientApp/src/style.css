@@ -1,5 +1,5 @@
 html{
-    overflow: hidden;
+    overflow-x: hidden;
     font-family: Poppins;
     
 }
@@ -18,12 +18,23 @@ header{
 .wave-bg svg{
   position: absolute;
   bottom: -150px;
-
+  z-index: 2;
     
 }
-.wave-bg svg:nth-child(1){
-    z-index: 2;
+.wave{
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    left:0;
+    
 }
+.cross{
+    font-size: 35px;
+position: absolute;
+right: 15px;
+top: 15px;
+}
+
 body{
     margin:0;
     padding: 0;
@@ -31,15 +42,21 @@ body{
 :root{
     --primary-color:#3aafa9;
     --dark-primary-color: #2b7a78;
-    --secondary-color: #def2f1;
-    --black-color: #17252A;
+    --secondary-color: rgb(222, 242, 241);
+    --red-color: #F50057;
     --white-color:#feffff;
     
+}
+a{
+    text-decoration: none;
+    color:black;
+
 }
 h1{
     font-weight: 900;
     font-variant:normal;
     font-size: calc(25px + 2vmin);
+    margin: 0;
 }
 h2{
     font-weight: 200;
@@ -47,6 +64,7 @@ h2{
 
 }
 h3{
+    margin: 0;
     font-size: calc(18px + 2vmin);
     font-weight: 400;
 }
@@ -66,6 +84,9 @@ p{
     height: 100%;
     
 }
+.home .home-text h3{
+    margin-left: 50px;
+}
 .home .img-container{
  z-index: 1;
     overflow: hidden;
@@ -75,6 +96,7 @@ p{
   
 }
 .home .front-svg{
+    z-index: 3;
     position: absolute;
     bottom: 20px;
     right: 100px;
@@ -104,6 +126,7 @@ p{
     
 }
 .column{
+    margin: 50px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -157,6 +180,11 @@ p{
     transform: translateX(0);
     transform: translateY(0);
  }
+ .box-page{
+     width: 100%;
+     margin:30px;
+     padding-bottom: 40px;
+ }
  .box-page-title h2{
   text-align: center;
   margin: 0;
@@ -174,7 +202,7 @@ p{
     width: auto;
 }
 .title-name{
-    color: var(--secondary-color);
+    color:black;
     position: absolute;
     bottom: -15px;
 }
@@ -202,8 +230,9 @@ ul{
   list-style-type: none;
 }
 ul>li{
+    z-index: 3;
   align-items: center;
-  width: 10vw;
+  width: 100px;
   display: flex;
   justify-content: center;
  font-size: 20px;
@@ -220,6 +249,7 @@ nav >svg{
     width: 50%;
     max-width: 500px;
     height: auto;
+    min-width: 350px;
 }
 svg, li{
   transition: all 1s ease;
@@ -231,10 +261,19 @@ li a{
     text-decoration: none;
     color:var(--secondary-color);
 }
+nav .wrapper .input-data input{
+color: var(--white-color);
+}
+nav .wrapper .input-data label{
+    color: var(--white-color);
+    }
+nav .underline{
+    background: var(--white-color);
+}
 .box-page-title{
     color: var(--black-color);
-    position: absolute;
-    top:10vh;
+    position: relative;
+    
    
 }
 
@@ -256,6 +295,7 @@ li a{
     position: relative;
     display: inline-block;
     background: transparent;
+    margin: 10px;
     
 }
 .wrapper .input-data label{
@@ -263,18 +303,18 @@ li a{
     position: absolute;
     left:0;
     transition: 0.5s ease;
-    color: var(--secondary-color);
+    color: #17252A;
 
 }
 #search-input{
     width: 60px;
 }
-.wrapper .input-data input{
+.wrapper .input-data input,select{
     
     border: none;
     outline: none;
     background: transparent;
-    color: var(--secondary-color);
+    font-family: Poppins;
     font-size: 20px;
     transition: 1s ease;
     z-index: 5;
@@ -287,7 +327,7 @@ li a{
     width: 100%;
     left:0;
     height: 2px;
-    background: gray;
+    background: var(--dark-primary-color);
     z-index: 2;
 }
  .underline{
@@ -296,7 +336,7 @@ li a{
     width: 0;
     left:0;
     height: 2px;
-    background: var(--secondary-color);
+    background: var(--primary-color);
     transition:  0.5s ease;
     z-index: 3;
 }
@@ -327,36 +367,50 @@ cursor: pointer;
      transition: 1s ease;
  }
  .wrapper .input-data input:focus ~ button svg path{
-    color: #3aafa9;
+    color: var(--red-color);
  }
  .search-overlay{
      height: 100vh;
      width: 100vw;
      position: absolute;
+     display: flex;
+     justify-content: center;
+     align-items: center;
      z-index: 10;
      top:0;
      left:0;
+     background-color: rgb(222, 242, 241, 0.5);;
  }
- .search-list{
-    position: absolute;
-    top: 25%;
-    left: 25%;
-    border-radius: 25px;
-    background-color: #17252A;
-    width: 50%;
-    min-height: 50%;
+ .search-list{ 
+     overflow: auto;
+    padding:10px;
+    position: relative;
+    border-radius: 10px;
+    background-color: var(--white-color);
+    width: 100%;
+    max-width: 400px;
+    min-height: 70%;
+    box-shadow: 
+    0 0.7px 4px rgba(0,0,0,0.045),
+     0 1.9px 11.1px rgba(0,0,0,0.065),
+      0 4.5px 26.8px rgba(0,0,0,0.085),
+      0 15px 89px rgba(0,0,0,0.013) ;
  }
- .search-list svg{
-     font-size: 35px;
-     position: absolute;
-     right: 10px;
-     top: 10px;
+ .search-list .column{
+     margin:10px;
  }
+ .search-item{
+    font-weight: bold;
+    font-size: 25px;
+ }
+
  .search-list svg path {
-     fill: #2b7a78;
+     fill: var(--red-color);
  }
 .btn{
-    border-radius: 25px;
+    cursor: pointer;
+    font-size: 20px;
+    border-radius: 100px;
     text-align: center;
     min-width: 60px;
     margin: 10px;
@@ -379,8 +433,39 @@ cursor: pointer;
 .btn:focus{
  border: none;
  outline: none;
+ 
 }
-
+.btn svg{
+    padding-left: 5px;
+    padding-right: 5px;
+}
 svg{
     cursor: pointer;
+}
+.items{
+   
+    
+    width: 100%;
+}
+.items .row{
+    border-radius:100px;
+    height: 70px;
+    padding:5px;
+    width: 60vw;
+    min-width: 200px;
+    justify-content: flex-start;
+    overflow-x: auto;
+}
+.items-title-row{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+.items-title-row > div{
+    margin:5px;
+}
+
+@media only screen and (max-width: 650px) {
+  
 }

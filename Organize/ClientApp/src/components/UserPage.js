@@ -1,7 +1,6 @@
 ﻿import React, { useState,useEffect } from 'react'
-import Search from './Search'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {motion, AnimateSharedLayout} from 'framer-motion'
+import {motion} from 'framer-motion'
 import Container from './Container'
 import Loader from './Loader'
 
